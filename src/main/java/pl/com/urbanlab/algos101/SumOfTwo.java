@@ -2,16 +2,22 @@ package pl.com.urbanlab.algos101;
 
 import org.junit.Assert;
 
+import java.util.HashMap;
+
 class SumOfTwo {
 
     private static final int[] NO_SOLUTION = {};
 
     public static int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> numberIndex = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
-            for (int j = 0; j < nums.length; j++) {
-                if (i != j && nums[i] + nums[j] == target) {
-                    return new int[]{i, j};
-                }
+            numberIndex.put(nums[i], i);
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            int numberSearched = target - nums[i];
+            if (numberIndex.containsKey(numberSearched)) {
+                return new int[]{i, numberIndex.get(numberSearched)};
             }
         }
         return NO_SOLUTION;
