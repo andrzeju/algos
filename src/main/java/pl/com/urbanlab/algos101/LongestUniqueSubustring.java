@@ -6,7 +6,19 @@ public class LongestUniqueSubustring {
 
     /** Length of a longest substring without repeating characters */
     public static int lengthOfLongestSubstring(String s) {
-        return 0;
+        int maxLength = 0;
+        StringBuilder substring = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (substring.indexOf(s.substring(i, i + 1)) != -1) {
+                break;
+            }
+            substring.append(s.charAt(i));
+
+            if (substring.length() > maxLength) {
+                maxLength = substring.length();
+            }
+        }
+        return maxLength;
     }
 
     public static void main(String[] args) {
