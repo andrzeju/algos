@@ -2,40 +2,33 @@ package pl.com.urbanlab.algos101;
 
 import org.junit.Assert;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LongestUniqueSubustring {
 
     /** Length of a longest substring without repeating characters */
     public static int lengthOfLongestSubstring(String s) {
-        int longestSubstringLenght = 0;
+        int maxLength = 0;
+        int i = 0;
+        int j = 0;
+        int stringLength = s.length();
+        Set<Character> characterSet = new HashSet<>();
 
-        for (int i = 0; i < s.length(); i++) {
-            int maxLength = substringMaxLength(s.substring(i));
-            if (maxLength > longestSubstringLenght) {
-                longestSubstringLenght = maxLength;
+        while (i < stringLength && j < stringLength) {
+            if (!characterSet.contains(s.charAt(j))){
+                characterSet.add(s.charAt(j++));
+                maxLength = Math.max(maxLength, j - i);
+            } else {
+                characterSet.remove(s.charAt(i++));
             }
         }
-
-        return longestSubstringLenght;
-    }
-
-    private static int substringMaxLength(String s) {
-        int substringMaxLength = 0;
-        StringBuilder substring = new StringBuilder();
-        for (int i = 0; i < s.length(); i++) {
-            if (substring.indexOf(s.substring(i, i + 1)) != -1) {
-                break;
-            }
-            substring.append(s.charAt(i));
-
-            if (substring.length() > substringMaxLength) {
-                substringMaxLength = substring.length();
-            }
-        }
-        return substringMaxLength;
+        return maxLength;
     }
 
     public static void main(String[] args) {
         Assert.assertEquals(3, lengthOfLongestSubstring("abcabc"));
+        Assert.assertEquals(3, lengthOfLongestSubstring("abcbac"));
         Assert.assertEquals(1, lengthOfLongestSubstring("aaaa"));
         Assert.assertEquals(5, lengthOfLongestSubstring("ugghjklg"));
         Assert.assertEquals(3, lengthOfLongestSubstring("1112332211"));
