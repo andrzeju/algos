@@ -4,7 +4,18 @@ import org.junit.Assert;
 
 public class IntegerPalindrome {
     public static boolean isPalindrome(int x) {
-        return false;
+        if (x < 0) {
+            return false;
+        }
+        String stringifiedInt = Long.toString(x);
+        int len = stringifiedInt.length();
+
+        for (int i = 0; i < len/2; i++) {
+            if (stringifiedInt.charAt(i) != stringifiedInt.charAt(len-1-i)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {
