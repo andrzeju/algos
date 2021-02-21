@@ -4,9 +4,7 @@ import org.junit.Assert;
 
 public class IntegerPalindrome {
     public static boolean isPalindrome(int x) {
-        if (x < 0) {
-            return false;
-        }
+
         String stringifiedInt = Long.toString(x);
         int len = stringifiedInt.length();
 
@@ -24,5 +22,7 @@ public class IntegerPalindrome {
         Assert.assertTrue(isPalindrome(1));
         Assert.assertFalse(isPalindrome(123));
         Assert.assertFalse(isPalindrome(-121));
+        Assert.assertFalse(isPalindrome(-1));
+        Assert.assertTrue(isPalindrome(0));
     }
 }
