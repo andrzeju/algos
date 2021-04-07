@@ -11,7 +11,8 @@ public class LongestCommonPrefix {
         }
         for (int i = 0; i < words[0].length(); i++) {
             for (int j = 0; j < words.length - 1; j++) {
-                if (words[j+1].length() <= i || words[j].charAt(i) != words[j+1].charAt(i)) {
+                boolean nextWordCharNotMatching = words[j+1].length() <= i || words[j].charAt(i) != words[j+1].charAt(i);
+                if (nextWordCharNotMatching) {
                     return commonPrefix.toString();
                 }
             }
