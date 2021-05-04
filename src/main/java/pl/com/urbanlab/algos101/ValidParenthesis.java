@@ -18,8 +18,9 @@ public class ValidParenthesis {
             String currentChar = String.valueOf(s.charAt(i));
             if (opening.contains(currentChar)) {
                 parenthesisStack.append(s.charAt(i));
-            } else if (pairs.get(currentChar) != null && parenthesisStack.lastIndexOf(pairs.get(currentChar)) == parenthesisStack.length() -1){
-                parenthesisStack.deleteCharAt(parenthesisStack.length() -1);
+            } else if (pairs.get(currentChar) != null && parenthesisStack.lastIndexOf(pairs.get(currentChar)) != -1
+                    && parenthesisStack.lastIndexOf(pairs.get(currentChar)) == parenthesisStack.length() - 1){
+                parenthesisStack.deleteCharAt(parenthesisStack.length() - 1);
             } else {
                 return false;
             }
@@ -36,6 +37,9 @@ public class ValidParenthesis {
         Assert.assertTrue("Nested parentiesis are valid", isValid(valid3));
         String invalid1 = "[}";
         String invalid2 = "[43dfdfg}";
+        String invalid3 = "}";
+        Assert.assertFalse("Invalid chars are invalid", isValid(invalid1));
         Assert.assertFalse("Invalid chars are invalid", isValid(invalid2));
+        Assert.assertFalse("Invalid chars are invalid", isValid(invalid3));
     }
 }
