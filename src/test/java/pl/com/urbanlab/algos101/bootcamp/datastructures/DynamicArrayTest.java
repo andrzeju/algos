@@ -24,15 +24,17 @@ public class DynamicArrayTest {
     public void insert() {
         array.add("a"); // 0
         array.add("b"); // 1
-        array.add("c"); // 2
+        array.add("d"); // 2
+        array.add("e"); // 3
 
-        array.insert(1, "d");
+        array.insert(2, "c");
 
-        Assert.assertEquals(4, array.size());
+        Assert.assertEquals(5, array.size());
         Assert.assertEquals("a", array.get(0));
-        Assert.assertEquals("d", array.get(1));
-        Assert.assertEquals("b", array.get(2));
-        Assert.assertEquals("c", array.get(3));
+        Assert.assertEquals("b", array.get(1));
+        Assert.assertEquals("c", array.get(2));
+        Assert.assertEquals("d", array.get(3));
+        Assert.assertEquals("e", array.get(4));
     }
 
     @Test
