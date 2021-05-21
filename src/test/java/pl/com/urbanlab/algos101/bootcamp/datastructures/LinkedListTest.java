@@ -26,6 +26,15 @@ public class LinkedListTest {
     }
 
     @Test
+    public void addToBack() {
+        linkedList.addToFront(1);
+        linkedList.addToBack(2);
+
+        assertEquals(1, linkedList.getFirst());
+        assertEquals(2, linkedList.getLast());
+    }
+
+    @Test
     public void testGetFirst() {
         linkedList.addToFront(1);
         assertEquals(1, linkedList.getFirst());

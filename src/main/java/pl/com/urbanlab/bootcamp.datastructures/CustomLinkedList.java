@@ -31,6 +31,16 @@ public class CustomLinkedList {
         head = newHead;
     }
 
+    public void addToBack(int i) {
+        Node newNode = new Node(i);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node tail = Node.getLast(head);
+            tail.next = newNode;
+        }
+    }
+
     public int getFirst() {
         throwExceptionOnEmptyList();
         return head.data;
