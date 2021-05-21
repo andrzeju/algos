@@ -32,10 +32,18 @@ public class CustomLinkedList {
     }
 
     public int getFirst() {
+        throwExceptionOnEmptyList();
         return head.data;
     }
 
     public int getLast() {
+        throwExceptionOnEmptyList();
         return Node.getLast(head).data;
+    }
+
+    private void throwExceptionOnEmptyList() {
+        if (head == null) {
+            throw new IllegalStateException("List is empty");
+        }
     }
 }

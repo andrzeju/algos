@@ -2,11 +2,7 @@ package pl.com.urbanlab.algos101.bootcamp.datastructures;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.Stopwatch;
 import pl.com.urbanlab.bootcamp.datastructures.CustomLinkedList;
-
-import java.time.Instant;
-import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 
@@ -47,6 +43,16 @@ public class LinkedListTest {
         assertEquals(1, linkedList.getLast());
     }
 
+    @Test(expected = IllegalStateException.class)
+    public void getFirstExceptionHandledWhenListEmptyTest() {
+        linkedList.getFirst();
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void getLastExceptionHandledWhenListEmptyTest() {
+        linkedList.getLast();
+    }
+
     @Test
     public void addToFrontPerformanceTest() {
         for (int i = 0; i < 10_000_000; i++) {
@@ -55,7 +61,7 @@ public class LinkedListTest {
     }
 
     @Test
-    public void addToFrontPerformanceTestNoCondition() {
+    public void addToFrontNoConditionPerformanceTest() {
         for (int i = 0; i < 10_000_000; i++) {
             linkedList.addToFrontNoCondition(42);
         }
