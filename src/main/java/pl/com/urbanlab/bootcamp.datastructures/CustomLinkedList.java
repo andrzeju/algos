@@ -16,6 +16,7 @@ public class CustomLinkedList {
     }
 
     private Node head;
+    private int size;
 
     public void addToFront(int i) {
         Node newHead = new Node(i);
@@ -23,12 +24,14 @@ public class CustomLinkedList {
             newHead.next = head;
         }
         head = newHead;
+        size++;
     }
 
     public void addToFrontNoCondition(int i) {
         Node newHead = new Node(i);
         newHead.next = head;
         head = newHead;
+        size++;
     }
 
     public void addToBack(int i) {
@@ -38,6 +41,40 @@ public class CustomLinkedList {
         } else {
             Node tail = Node.getLast(head);
             tail.next = newNode;
+        }
+        size++;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void clear() {
+        head = null;
+        size = 0;
+    }
+
+    public void deleteSingleValue(int i) {
+        if (head == null) {
+            return;
+        }
+
+        if (head.data == i) {
+            head = head.next;
+            size--;
+            return;
+        }
+
+        Node currentNode = head;
+        while (currentNode.next != null) {
+            Node nextNode = currentNode.next;
+            if (nextNode.data == i) {
+                currentNode.next = nextNode.next;
+                size--;
+                return;
+            }
+            currentNode = currentNode.next;
+
         }
     }
 

@@ -52,6 +52,40 @@ public class LinkedListTest {
         assertEquals(1, linkedList.getLast());
     }
 
+    @Test
+    public void sizeTest() {
+        assertEquals(0, linkedList.size());
+        linkedList.addToFront(6);
+        assertEquals(1, linkedList.size());
+        linkedList.addToBack(3);
+        assertEquals(2, linkedList.size());
+    }
+
+    @Test
+    public void clearTest() {
+        linkedList.addToFront(6);
+        linkedList.addToBack(3);
+        assertEquals(2, linkedList.size());
+        linkedList.clear();
+        assertEquals(0, linkedList.size());
+    }
+
+    @Test
+    public void deleteValueTest() {
+        linkedList.addToFront(1);
+        linkedList.addToFront(2);
+        linkedList.addToFront(3);
+        linkedList.deleteSingleValue(2);
+        assertEquals(2, linkedList.size());
+        assertEquals(1, linkedList.getLast());
+        assertEquals(3, linkedList.getFirst());
+        linkedList.deleteSingleValue(1);
+        linkedList.deleteSingleValue(15);
+        assertEquals(1, linkedList.size());
+        linkedList.deleteSingleValue(3);
+        assertEquals(0, linkedList.size());
+    }
+
     @Test(expected = IllegalStateException.class)
     public void getFirstExceptionHandledWhenListEmptyTest() {
         linkedList.getFirst();
