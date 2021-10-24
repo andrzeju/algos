@@ -1,9 +1,8 @@
-package pl.com.urbanlab.algos101.bootcamp.datastructures;
+package pl.com.urbanlab.bootcamp.datastructures;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import pl.com.urbanlab.bootcamp.datastructures.DynamicArray;
 
 public class DynamicArrayTest {
 
@@ -11,7 +10,7 @@ public class DynamicArrayTest {
 
     @Before
     public void setUp() {
-        array = new DynamicArray<String>(2);
+        array = new DynamicArray<>(2);
     }
 
     @Test
@@ -48,7 +47,7 @@ public class DynamicArrayTest {
         Assert.assertEquals(2, array.size());
         Assert.assertEquals("b", array.get(0));
         Assert.assertEquals("c", array.get(1));
-        Assert.assertEquals(null, array.get(2));
+        Assert.assertNull(array.get(2));
     }
 
     @Test
@@ -62,7 +61,7 @@ public class DynamicArrayTest {
         Assert.assertEquals(2, array.size());
         Assert.assertEquals("a", array.get(0));
         Assert.assertEquals("c", array.get(1));
-        Assert.assertEquals(null, array.get(2));
+        Assert.assertNull(array.get(2));
     }
 
     @Test
@@ -76,7 +75,7 @@ public class DynamicArrayTest {
         Assert.assertEquals(2, array.size());
         Assert.assertEquals("a", array.get(0));
         Assert.assertEquals("b", array.get(1));
-        Assert.assertEquals(null, array.get(2));
+        Assert.assertNull(array.get(2));
     }
 
     @Test

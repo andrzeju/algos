@@ -1,8 +1,7 @@
-package pl.com.urbanlab.algos101.bootcamp.datastructures;
+package pl.com.urbanlab.bootcamp.datastructures;
 
 import org.junit.Before;
 import org.junit.Test;
-import pl.com.urbanlab.bootcamp.datastructures.Stack;
 
 import static org.junit.Assert.assertEquals;
 
