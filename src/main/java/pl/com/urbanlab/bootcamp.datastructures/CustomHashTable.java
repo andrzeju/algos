@@ -1,4 +1,4 @@
-package pl.com.urbanlab.algos101.bootcamp.datastructures;
+package pl.com.urbanlab.bootcamp.datastructures;
 
 public class CustomHashTable {
 
