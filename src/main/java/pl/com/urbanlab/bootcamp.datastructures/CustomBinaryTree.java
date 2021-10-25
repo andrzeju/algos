@@ -43,6 +43,30 @@ public class CustomBinaryTree {
         return data.min();
     }
 
+    public void delete(int key) {
+        if (data == null) {
+            throw new IllegalStateException("No elements in the tree");
+        }
+
+        deleteRecursively(key, data);
+    }
+
+    private void deleteRecursively(int key, CustomTreeNode node) {
+        if (node.key == key) {
+            if (node.left == null && node.right == null) {
+                node = null;
+            } else if (node.left == null || node.right == null) {
+                //promote one node up
+            } else {
+                //replace with right min and delete low duplicate
+            }
+        } else if (key > node.key) {
+            deleteRecursively(key, node.right);
+        } else {
+            deleteRecursively(key, node.left);
+        }
+    }
+
     private class CustomTreeNode {
         private final int key;
         private final String value;
