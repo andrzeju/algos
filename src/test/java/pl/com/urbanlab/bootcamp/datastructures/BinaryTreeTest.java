@@ -3,8 +3,7 @@ package pl.com.urbanlab.bootcamp.datastructures;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class BinaryTreeTest {
 
@@ -18,6 +17,9 @@ public class BinaryTreeTest {
         tree.insert(5, "London");
         tree.insert(2, "Dehli");
         tree.insert(0, "Sosnowiec");
+        tree.insert(6, "Maine");
+        tree.insert(4, "Boston");
+        tree.insert(7, "Chicago");
     }
 
     @Test
@@ -47,8 +49,14 @@ public class BinaryTreeTest {
 
     @Test
     public void testDelete() {
+        tree.delete(0);
+        assertNull(tree.find(0));
+
         tree.delete(5);
         assertNull(tree.find(5));
+        assertNotNull(tree.find(2));
+        assertNotNull(tree.find(6));
+        assertNotNull(tree.find(7));
     }
 
 }

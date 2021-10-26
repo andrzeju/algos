@@ -24,6 +24,9 @@ public class CustomBinaryTree {
     }
 
     private String findRecursively(int key, CustomTreeNode node) {
+        if (node == null) {
+            return null;
+        }
         String value;
         if (node.key == key) {
             value = node.value;
@@ -40,7 +43,15 @@ public class CustomBinaryTree {
             throw new IllegalStateException("No elements in the tree");
         }
 
-        return data.min();
+        return data.min().value;
+    }
+
+    public CustomTreeNode findMinimum(CustomTreeNode node) {
+        if (node == null) {
+            throw new IllegalStateException("No elements in the tree");
+        }
+
+        return node.min();
     }
 
     public void delete(int key) {
@@ -48,28 +59,37 @@ public class CustomBinaryTree {
             throw new IllegalStateException("No elements in the tree");
         }
 
-        deleteRecursively(key, data);
+        data = deleteRecursively(key, data);
     }
 
-    private void deleteRecursively(int key, CustomTreeNode node) {
+    private CustomTreeNode deleteRecursively(int key, CustomTreeNode node) {
         if (node.key == key) {
             if (node.left == null && node.right == null) {
-                node = null;
-            } else if (node.left == null || node.right == null) {
+                return null;
+            } else if (node.left == null) {
+                return node.right;
                 //promote one node up
+            } else if (node.right == null) {
+                //promote one node up
+                return node.left;
             } else {
                 //replace with right min and delete low duplicate
+                CustomTreeNode minNode = findMinimum(node.right);
+                node.key = minNode.key;
+                node.value = minNode.value;
+                node.right = deleteRecursively(minNode.key, node.right);
             }
         } else if (key > node.key) {
-            deleteRecursively(key, node.right);
+            node.right = deleteRecursively(key, node.right);
         } else {
-            deleteRecursively(key, node.left);
+            node.left = deleteRecursively(key, node.left);
         }
+        return node;
     }
 
     private class CustomTreeNode {
-        private final int key;
-        private final String value;
+        private int key;
+        private String value;
         private CustomTreeNode left, right;
 
         public CustomTreeNode(int key, String value) {
@@ -77,9 +97,9 @@ public class CustomBinaryTree {
             this.value = value;
         }
 
-        private String min() {
+        private CustomTreeNode min() {
             if (this.left == null) {
-                return this.value;
+                return this;
             } else {
                 return this.left.min();
             }
