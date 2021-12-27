@@ -1,0 +1,2 @@
+AVL tree - a binary search tree with balancing on every insert and delete.
+Perfectly balanced, so better for searches, but at cost of performance of inserts and deletes.

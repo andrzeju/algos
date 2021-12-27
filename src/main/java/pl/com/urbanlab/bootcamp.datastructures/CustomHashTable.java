@@ -3,7 +3,7 @@ package pl.com.urbanlab.bootcamp.datastructures;
 public class CustomHashTable {
 
     private static final int INITIAL_TABLE_SIZE = 8;
-    private HashEntry [] entries;
+    private final HashEntry [] entries;
 
     public CustomHashTable() {
         entries = new HashEntry[INITIAL_TABLE_SIZE];
@@ -44,7 +44,7 @@ public class CustomHashTable {
         return Math.abs(key.hashCode()) % INITIAL_TABLE_SIZE;
     }
 
-    private class HashEntry {
+    private static class HashEntry {
         private final String key;
         private final String value;
         private HashEntry next;

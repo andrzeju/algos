@@ -1,0 +1,2 @@
+Also a BST, similar to AVL, but rebalances only ocasionally, just marking objects at every insert and delete.
+Better for inserts and deletes, less performant for lookups than AVL.

@@ -1,0 +1,2 @@
+A tree-like structure (implemented as an array with nodes from ordered from left-top, i.e. in PriorityQueue)
+that allows get min or max in O(1) ( +O(log n) for heapify up or down).

@@ -36,5 +36,8 @@ public class LongestCommonPrefix {
         String [] emptyArray = {};
         Assert.assertEquals("", getLongestPrefix(emptyArray));
 
+        String [] shortToLongArray = {"ab", "abakus", "abanana"};
+        Assert.assertEquals("ab", getLongestPrefix(shortToLongArray));
+
     }
 }
