@@ -11,13 +11,17 @@ public class InvertedIntDigits {
         }
 
         StringBuilder stringifiedInt = new StringBuilder(Integer.toString(Math.abs(x)));
-        stringifiedInt.reverse();
+        StringBuilder reverseStringifiedInt = new StringBuilder(stringifiedInt.length());
 
-        if (x<0) {
-            stringifiedInt.insert(0, "-");
+        for (int i = 0; i < stringifiedInt.length(); i++) {
+            reverseStringifiedInt.append(stringifiedInt.charAt(stringifiedInt.length() - 1 - i));
         }
 
-        long result = Long.parseLong(stringifiedInt.toString());
+        if (x<0) {
+            reverseStringifiedInt.insert(0, "-");
+        }
+
+        long result = Long.parseLong(reverseStringifiedInt.toString());
         if (result > Integer.MAX_VALUE || result < Integer.MIN_VALUE) {
             return 0;
         }

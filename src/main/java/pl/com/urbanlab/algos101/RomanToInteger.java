@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class RomanToInteger {
 
-    static Map<String, Integer> mapping = new HashMap<String, Integer>() {{
+    static Map<String, Integer> mapping = new HashMap<>() {{
         put("I", 1);
         put("V", 5);
         put("X", 10);
