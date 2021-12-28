@@ -1,0 +1,3 @@
+Bubble sort - `bubble up` each object from lowest to highest position, O(n2^) - nested loops
+Merge sort - divide, then sort & merge, O(n log(n))
+Quicksort - set pivot point, swap left and right, then split, O(n log(n)) but quicker than above
