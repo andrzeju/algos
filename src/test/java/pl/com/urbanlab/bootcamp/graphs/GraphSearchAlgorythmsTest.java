@@ -1,4 +1,4 @@
-package pl.com.urbanlab.bootcamp.datastructures;
+package pl.com.urbanlab.bootcamp.graphs;
 
 import org.junit.Assert;
 import org.junit.Before;
