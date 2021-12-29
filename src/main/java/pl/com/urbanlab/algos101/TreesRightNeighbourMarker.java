@@ -9,9 +9,39 @@ public class TreesRightNeighbourMarker {
 
         root.left.next = root.right;
         root.right.next = root.next != null ? root.next.left : null;
-        root.left = connect(root.left);
-        root.right = connect(root.right);
+        connect(root.left);
+        connect(root.right);
         return root;
+    }
+
+    public Node connectUnbalanced(Node root) {
+        if (root == null) {
+            return null;
+        }
+
+        if (root.next != null && root.right != null) {
+            root.right.next = root.next.left != null ? root.next.left : findToTheRight(root.next);
+        }
+        if (root.left != null) {
+            root.left.next = root.right != null ? root.right : findToTheRight(root.next);
+        }
+
+        connectUnbalanced(root.right);
+        connectUnbalanced(root.left);
+        return root;
+    }
+
+    private Node findToTheRight(Node node) {
+        if (node == null) {
+            return null;
+        }
+        if (node.left != null) {
+            return node.left;
+        }
+        if (node.right != null) {
+            return node.right;
+        }
+        return findToTheRight(node.next);
     }
 
 }
