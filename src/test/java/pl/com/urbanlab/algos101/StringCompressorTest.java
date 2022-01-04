@@ -6,16 +6,22 @@ import static org.junit.Assert.*;
 
 public class StringCompressorTest {
 
-    @Test
-    public void testSpringCompressed() {
-        StringCompressor compressor = new StringCompressor();
+    private final StringCompressor compressor = new StringCompressor();
 
+    @Test
+    public void testShort() {
         char[] oneCharString = {'a'};
         assertEquals(1, compressor.compress(oneCharString));
+    }
 
+    @Test
+    public void testUnique() {
         char[] uniqueString = {'a','b','c','d','e','f'};
         assertEquals(6, compressor.compress(uniqueString));
+    }
 
+    @Test
+    public void testStringCompressed() {
         char[] charString = {'a','a','b','b','b','c'};
         assertEquals(5, compressor.compress(charString));
         assertEquals('a', charString[0]);
@@ -26,7 +32,16 @@ public class StringCompressorTest {
 
         char[] longerText = {'a','b','b','b','b','c','c','c','c','c','a','a'};
         assertEquals(7, compressor.compress(longerText));
+    }
 
-        //test more than 10 duplicates
+//    @Test
+    public void testMultipleDigitDuplicates() {
+        char[] doubleDigitDuplicates = {'a','b','b','b','b','b','b','b','b','b','b','b','b'};
+        assertEquals(4, compressor.compress(doubleDigitDuplicates));
+        assertEquals('a', doubleDigitDuplicates[0]);
+        assertEquals('b', doubleDigitDuplicates[1]);
+        assertEquals('1', doubleDigitDuplicates[2]);
+        assertEquals('2', doubleDigitDuplicates[3]);
+
     }
 }

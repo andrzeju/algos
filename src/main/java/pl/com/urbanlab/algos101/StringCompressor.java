@@ -9,19 +9,17 @@ public class StringCompressor {
 
         int insertCounter = 1;
         int duplicateCounter = 1;
-        System.out.printf("ins[%d] = %s ====\n", 0, text[0]);
         for (int i = 1; i < text.length; i++) {
-            if (text[i] == text[i - 1]) { //same as previous - increase
+            if (text[i] == text[i - 1]) {
                 duplicateCounter++;
-                if (i == text.length - 1 || text[i] != text[i+1]) { //but different than next - add digit and move insert
+                if (i == text.length - 1 || text[i] != text[i+1]) {
                     text[insertCounter] = (char) (duplicateCounter + '0');
-                    System.out.printf("ins[%d] = %s(s)\n", insertCounter, duplicateCounter);
-                    insertCounter++;
+                    int length = String.valueOf(duplicateCounter).length();
+                    insertCounter+=length;
                     duplicateCounter = 1;
                 }
             } else {
                 text[insertCounter] = text[i];
-                System.out.printf("ins[%d] = %s\n", insertCounter, text[i]);
                 insertCounter++;
             }
         }
