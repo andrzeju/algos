@@ -7,22 +7,24 @@ public class StringCompressor {
             return text.length;
         }
 
-        int insertCounter = 0;
+        int insertCounter = 1;
         int duplicateCounter = 1;
-        for (int i = 0; i < text.length - 1; i++) {
-            if (text[i] == text[i + 1]) {
+        System.out.printf("ins[%d] = %s ====\n", 0, text[0]);
+        for (int i = 1; i < text.length; i++) {
+            if (text[i] == text[i - 1]) { //same as previous - increase
                 duplicateCounter++;
-            } else {
-                insertCounter ++;
-                if (duplicateCounter > 1) {
+                if (i == text.length - 1 || text[i] != text[i+1]) { //but different than next - add digit and move insert
                     text[insertCounter] = (char) (duplicateCounter + '0');
-                    insertCounter ++;
+                    System.out.printf("ins[%d] = %s(s)\n", insertCounter, duplicateCounter);
+                    insertCounter++;
                     duplicateCounter = 1;
-                } else {
-                    text[insertCounter] = text[i+1];
                 }
+            } else {
+                text[insertCounter] = text[i];
+                System.out.printf("ins[%d] = %s\n", insertCounter, text[i]);
+                insertCounter++;
             }
         }
-        return 1 + insertCounter;
+        return insertCounter;
     }
 }
